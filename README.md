@@ -15,7 +15,7 @@ I am currently learning software development skills. I have a keen interest in b
 <p align="center">
 	<a href="https://github.com/cadzchua"><img alt="github" width="9%" style="padding:5px" src="https://img.icons8.com/clouds/100/000000/github.png"/></a>
 	<a href="https://www.linkedin.com/in/caddenchua/"><img alt="linkedin" width="9%" style="padding:5px" src="https://img.icons8.com/clouds/100/000000/linkedin.png"/></a>
-	<a href="https://www.instagram.com/cadzchua/"><img alt="instagram" width=9%" style="padding:5px"src="https://img.icons8.com/clouds/100/000000/instagram.png"/></a>
+	<a href="https://www.instagram.com/cadzchua/"><img alt="instagram" width="9%" style="padding:5px"src="https://img.icons8.com/clouds/100/000000/instagram.png"/></a>
 </p>
 
 
