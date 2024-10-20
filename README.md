@@ -4,7 +4,7 @@
 </h1>
 <h3 align="center"><img src="https://emojis.slackmojis.com/emojis/images/1588315024/8823/hyperkitty.gif?1588315024" width="30" /> A student from Singapore.</h3>
 <div align="center">
-I am currently learning software development skills. I have a keen interest in both software development and AI/ML. Currently, I am focusing on learning gRPC. <img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Penguin.png" alt="Penguin" width="10%" />
+I am currently studying. I have a keen interest in both software development and AI/ML. Currently, I am focusing on AIML (LLMs). <img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Penguin.png" alt="Penguin" width="10%" />
 </div>
 <br />
 <br />
