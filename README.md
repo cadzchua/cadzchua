@@ -4,11 +4,11 @@
 </h1>
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/74038190/216656971-9a208a88-e6ad-4b7a-88eb-c410e4cf0e00.gif" width="160" />
+    <img src="https://user-images.githubusercontent.com/74038190/216656971-9a208a88-e6ad-4b7a-88eb-c410e4cf0e00.gif" width="250" />
 </p>
 
 <h3 align="center">
-    <img src="https://emojis.slackmojis.com/emojis/images/1588315024/8823/hyperkitty.gif?1588315024" width="30" /> A student from Singapore
+    A student from Singapore
 </h3>
 
 <div align="center" style="font-size: 1.2em; max-width: 800px; margin: 20px auto; line-height: 1.6;">
