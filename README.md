@@ -33,13 +33,6 @@
 </p>
 
 <p align="center">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=cadzchua&theme=tokyonight" 
-         alt="Cadden's streak" 
-         style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);" 
-         onError="this.onerror=null;this.src='https://via.placeholder.com/500x200/cccccc/ffffff?text=Streak+Unavailable';" />
-</p>
-
-<p align="center">
     <img src="https://cadzchuastats.vercel.app/api/top-langs/?username=cadzchua&theme=tokyonight&layout=compact" 
          alt="Cadden's top languages" 
          style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);" 
