@@ -4,7 +4,7 @@
 The cards are hand-designed SVGs, so this rewrites only clearly delimited regions
 rather than regenerating the files:
 
-  cadden-stats.svg   the text of #v-commits, #v-repos, #v-langs, #v-prs
+  cadden-stats.svg   the text of #v-contrib, #v-year, #v-repos, #v-langs, #v-prs
   cadden-langs.svg   everything between <!--gen:donut--> and <!--gen:legend--> markers
 
 It also bumps the ?v= cache tag on those two images in README.md, because GitHub's
@@ -45,8 +45,8 @@ COL_X = (
     {"swatch": 164, "label": 176, "pct": 270},
 )
 
-# Linguist colours for languages likely to show up here; anything unmapped
-# still renders, just in the neutral grey.
+# Linguist colours for languages likely to show up here. Anything unmapped falls
+# through to FALLBACK_COLOURS below.
 LANG_COLOURS = {
     "TypeScript": "#3178c6", "JavaScript": "#f1e05a", "Python": "#3572a5",
     "Java": "#b07219", "HTML": "#e34c26", "CSS": "#563d7c", "C": "#555555",
@@ -60,9 +60,6 @@ OTHER_COLOUR = "#7d8590"
 # or it renders identically to the Other slice sitting next to it in the same legend.
 FALLBACK_COLOURS = ("#e8a838", "#6ea8fe", "#c084fc", "#5fd3bc", "#f6768e", "#a3be8c")
 TOP_N = 6
-
-# Ring geometry on the stats card: <circle class="ring" r="54" stroke-dasharray="339">
-RING_CIRCUM = 339.0
 
 
 def api(path: str, params: dict | None = None) -> dict:
@@ -247,34 +244,6 @@ def render_legend(slices: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def year_progress(today: dt.date | None = None) -> float:
-    """Fraction of the calendar year elapsed. The ring shows this, so a year-to-date
-    count sits against how much of the year it was earned in - otherwise a ring
-    implies a maximum that does not exist."""
-    today = today or dt.date.today()
-    start = dt.date(today.year, 1, 1)
-    days_in_year = (dt.date(today.year + 1, 1, 1) - start).days
-    return ((today - start).days + 1) / days_in_year
-
-
-def set_ring(svg: str, fraction: float) -> str:
-    """Rewrite the ring's end offset, and the reduced-motion rule that pins it."""
-    offset = round(RING_CIRCUM * (1 - fraction), 1)
-    svg, n1 = re.subn(
-        r"(@keyframes ring\{from\{stroke-dashoffset:339\}to\{stroke-dashoffset:)[\d.]+(\})",
-        lambda m: m.group(1) + f"{offset}" + m.group(2),
-        svg,
-    )
-    svg, n2 = re.subn(
-        r"(\.ring\{stroke-dashoffset:)[\d.]+(!important\})",
-        lambda m: m.group(1) + f"{offset}" + m.group(2),
-        svg,
-    )
-    if not (n1 and n2):
-        raise SystemExit("ring offset hooks not found - card structure changed?")
-    return svg
-
-
 def replace_between(text: str, marker: str, body: str) -> str:
     pattern = re.compile(f"(<!--gen:{marker}-->\n).*?(\n\\s*<!--/gen:{marker}-->)", re.DOTALL)
     if not pattern.search(text):
@@ -316,7 +285,6 @@ def main() -> int:
     stats = set_text_by_id(stats, "v-repos", str(data["repos"]))
     stats = set_text_by_id(stats, "v-langs", str(data["languages"]))
     stats = set_text_by_id(stats, "v-prs", str(data["prs"]))
-    stats = set_ring(stats, year_progress())
 
     langs = LANGS_SVG.read_text(encoding="utf-8")
     original_langs = langs

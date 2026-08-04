@@ -6,17 +6,15 @@
 .disp{font-family:'Trebuchet MS','Gill Sans',Avenir,'Segoe UI',sans-serif}
 /* vertical prism band; end must clear the inner clip (y 9-351) */
 @keyframes prism{0%{transform:translateY(-160px)}52%,100%{transform:translateY(540px)}}
-@keyframes ring{from{stroke-dashoffset:339}to{stroke-dashoffset:138.4}}
 @keyframes rise{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
 @keyframes pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}}
 @keyframes tilt{0%,100%{transform:rotate(-.5deg)}50%{transform:rotate(.5deg)}}
 .holo{animation:prism 6.5s ease-in-out 1.2s infinite}
-.ring{animation:ring 1.9s cubic-bezier(.4,0,.2,1) .5s forwards}
 .r{opacity:0;animation:rise .5s ease-out forwards}
-.pop{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .65s cubic-bezier(.34,1.4,.6,1) 1.5s forwards}
+.pop{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .65s cubic-bezier(.34,1.4,.6,1) .5s forwards}
 .card{transform-origin:150px 180px;animation:tilt 7s ease-in-out infinite}
-/* reduced motion: .r/.pop start hidden and .ring starts fully offset (empty), so pin all three */
-@media (prefers-reduced-motion:reduce){*{animation:none!important}.r,.pop{opacity:1!important}.ring{stroke-dashoffset:138.4!important}}
+/* reduced motion: .r/.pop start hidden, so pin them visible */
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.r,.pop{opacity:1!important}}
 ]]></style>
 
 <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
@@ -34,13 +32,13 @@
   <stop offset="70%" stop-color="#a78bfa" stop-opacity=".10"/>
   <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
 </linearGradient>
-<linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
-  <stop offset="0%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#a78bfa"/>
+<linearGradient id="numg" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0%" stop-color="#e6edf3"/>
+  <stop offset="100%"><animate attributeName="stop-color" values="#22d3ee;#a78bfa;#22d3ee" dur="8s" repeatCount="indefinite"/></stop>
 </linearGradient>
 <pattern id="grid" width="15" height="15" patternUnits="userSpaceOnUse">
   <path d="M15 0H0V15" fill="none" stroke="#22d3ee" stroke-opacity=".05" stroke-width="1"/>
 </pattern>
-<filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <filter id="drop" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter>
 <clipPath id="inner"><rect x="9" y="9" width="282" height="342" rx="13"/></clipPath>
 </defs>
@@ -58,30 +56,28 @@
   <text class="mono" x="26" y="38" font-size="9" letter-spacing="2.6" fill="#7d8590">GITHUB &#183; STATS</text>
   <line x1="26" y1="50" x2="274" y2="50" stroke="#21262d" stroke-width="1"/>
 
-  <!-- commit ring -->
-  <g transform="translate(150,135)">
-    <circle r="54" fill="none" stroke="#1b232c" stroke-width="9"/>
-    <circle class="ring" r="54" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round"
-            stroke-dasharray="339" stroke-dashoffset="339" transform="rotate(-90)" filter="url(#glow)"/>
-    <g class="pop">
-      <text id="v-contrib" class="disp" y="1" text-anchor="middle" font-size="34" font-weight="bold" fill="#e6edf3">985</text>
-      <text class="mono" y="21" text-anchor="middle" font-size="7.5" letter-spacing="1.4" fill="#a78bfa">CONTRIBUTIONS</text>
-      <text id="v-year" class="mono" y="34" text-anchor="middle" font-size="7.5" letter-spacing="2.4" fill="#7d8590">2026</text>
-    </g>
+  <!-- headline figure, no ring: a contribution count has no maximum, so a partial
+       arc round it would imply a scale that does not exist -->
+  <g class="pop">
+    <text id="v-contrib" class="disp" x="150" y="136" text-anchor="middle" font-size="56" font-weight="bold" fill="url(#numg)">985</text>
+    <text class="mono" x="150" y="162" text-anchor="middle" font-size="8.5" letter-spacing="1.8" fill="#a78bfa">CONTRIBUTIONS</text>
+    <text id="v-year" class="mono" x="150" y="180" text-anchor="middle" font-size="8" letter-spacing="2.4" fill="#7d8590">2026</text>
   </g>
 
-  <g class="mono" font-size="11.5">
+  <line x1="26" y1="208" x2="274" y2="208" stroke="#21262d" stroke-width="1" stroke-dasharray="3 4"/>
+
+  <g class="mono" font-size="12">
     <g class="r" style="animation-delay:.6s">
-      <text x="30" y="244" fill="#22d3ee">&#9634;</text><text x="50" y="244" fill="#7d8590">Repositories</text>
-      <text id="v-repos" x="270" y="244" text-anchor="end" fill="#e6edf3" font-weight="bold">12</text>
+      <text x="30" y="242" fill="#22d3ee">&#9634;</text><text x="52" y="242" fill="#7d8590">Repositories</text>
+      <text id="v-repos" x="270" y="242" text-anchor="end" fill="#e6edf3" font-weight="bold">12</text>
     </g>
     <g class="r" style="animation-delay:.74s">
-      <text x="30" y="276" fill="#22d3ee">&#9672;</text><text x="50" y="276" fill="#7d8590">Languages</text>
-      <text id="v-langs" x="270" y="276" text-anchor="end" fill="#e6edf3" font-weight="bold">8</text>
+      <text x="30" y="280" fill="#22d3ee">&#9672;</text><text x="52" y="280" fill="#7d8590">Languages</text>
+      <text id="v-langs" x="270" y="280" text-anchor="end" fill="#e6edf3" font-weight="bold">8</text>
     </g>
     <g class="r" style="animation-delay:.88s">
-      <text x="30" y="308" fill="#22d3ee">&#8631;</text><text x="50" y="308" fill="#7d8590">Pull Requests</text>
-      <text id="v-prs" x="270" y="308" text-anchor="end" fill="#e6edf3" font-weight="bold">6</text>
+      <text x="30" y="318" fill="#22d3ee">&#8631;</text><text x="52" y="318" fill="#7d8590">Pull Requests</text>
+      <text id="v-prs" x="270" y="318" text-anchor="end" fill="#e6edf3" font-weight="bold">6</text>
     </g>
   </g>
 </g>
