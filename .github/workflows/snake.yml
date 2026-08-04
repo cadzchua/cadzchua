@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "0 */12 * * *"
   workflow_dispatch:
+  # a push here IS a contribution, so it changes the graph the snake draws
+  push:
+    branches:
+      - main
 
 # the 12-hourly schedule and the push trigger can overlap, and both force-push
 # to the output branch
