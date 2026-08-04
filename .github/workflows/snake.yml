@@ -25,6 +25,9 @@ jobs:
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          # the default token is repo-scoped and sees PUBLIC contributions only.
+          # add a PAT with read:user as PROFILE_TOKEN to include private ones.
+          github_token: ${{ secrets.PROFILE_TOKEN || github.token }}
           outputs: |
             dist/github-snake-dark.svg?palette=github-dark&color_snake=#22d3ee&color_dots=#161b22,#0e4a52,#177f8c,#22d3ee,#4ade80
 

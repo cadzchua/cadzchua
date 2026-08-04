@@ -26,8 +26,9 @@ jobs:
 
       - name: Regenerate the cards
         env:
-          # the default token is enough for the REST and search endpoints used here
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # PROFILE_TOKEN (a PAT with read:user) makes the contribution figure
+          # include private activity; the default token sees public only
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
           STATS_USER: ${{ github.repository_owner }}
         run: python .github/stats/update_stats.py
 
