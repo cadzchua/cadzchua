@@ -4,7 +4,7 @@
 The cards are hand-designed SVGs, so this rewrites only clearly delimited regions
 rather than regenerating the files:
 
-  cadden-stats.svg   the text of #v-contrib, #v-year, #v-repos, #v-langs, #v-prs
+  cadden-stats.svg   the text of #v-contrib, #v-repos, #v-langs, #v-prs
   cadden-langs.svg   everything between <!--gen:donut--> and <!--gen:legend--> markers
 
 Exit codes: 0 = wrote changes or already current, 1 = failed to fetch.
@@ -87,8 +87,8 @@ def all_repos() -> list[dict]:
     return repos
 
 
-def graphql_contributions(year: int) -> int:
-    """Total contributions for the calendar year. Needs a token; Actions supplies one."""
+def graphql_contributions(since: dt.datetime, until: dt.datetime) -> int:
+    """Total contributions in a window. Needs a token; Actions supplies one."""
     query = """
       query($login:String!,$from:DateTime!,$to:DateTime!){
         user(login:$login){
@@ -101,8 +101,8 @@ def graphql_contributions(year: int) -> int:
         "query": query,
         "variables": {
             "login": USER,
-            "from": f"{year}-01-01T00:00:00Z",
-            "to": f"{year}-12-31T23:59:59Z",
+            "from": since.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "to": until.strftime("%Y-%m-%dT%H:%M:%SZ"),
         },
     }).encode()
     req = urllib.request.Request(
@@ -121,12 +121,11 @@ def graphql_contributions(year: int) -> int:
     return body["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
 
 
-def calendar_contributions(year: int) -> int:
-    """Fallback: sum the public contribution calendar. No token required."""
-    url = (
-        f"https://github.com/users/{USER}/contributions"
-        f"?from={year}-01-01&to={year}-12-31"
-    )
+def calendar_contributions() -> int:
+    """Fallback: sum the public contribution calendar. No token required.
+    With no date range the endpoint returns the trailing year, which is exactly
+    the window GitHub shows above the README and the window the snake draws."""
+    url = f"https://github.com/users/{USER}/contributions"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         html = resp.read().decode("utf-8", "replace")
@@ -141,15 +140,17 @@ def calendar_contributions(year: int) -> int:
     return total
 
 
-def contributions_this_year() -> tuple[int, int]:
-    """(year, total). Prefers GraphQL, falls back to scraping the calendar."""
-    year = dt.date.today().year
+def contributions_trailing_year() -> int:
+    """Contributions over the last 12 months - the same window as GitHub's own
+    graph and as the snake, so the three never disagree. Prefers GraphQL, falls
+    back to scraping the public calendar."""
     if TOKEN:
         try:
-            return year, graphql_contributions(year)
+            until = dt.datetime.now(dt.timezone.utc)
+            return graphql_contributions(until - dt.timedelta(days=365), until)
         except Exception as exc:  # noqa: BLE001 - fall back rather than fail the run
             print(f"graphql contributions failed ({exc}); using calendar", file=sys.stderr)
-    return year, calendar_contributions(year)
+    return calendar_contributions()
 
 
 def collect() -> dict:
@@ -163,14 +164,13 @@ def collect() -> dict:
             byte_totals[lang] = byte_totals.get(lang, 0) + count
 
     prs = api("search/issues", {"q": f"author:{USER} type:pr", "per_page": 1})["total_count"]
-    year, contributions = contributions_this_year()
+    contributions = contributions_trailing_year()
 
     return {
-        # the contribution calendar, i.e. the same figure GitHub renders above the
-        # README. search/commits only indexes default branches of public non-fork
-        # repos, so it reported well under half of this.
+        # trailing 12 months, matching GitHub's own graph and the snake. search/commits
+        # only indexes default branches of public non-fork repos, so it reported well
+        # under half of this.
         "contributions": contributions,
-        "year": year,
         "repos": profile["public_repos"],
         "languages": len(byte_totals),
         "prs": prs,
@@ -269,7 +269,6 @@ def main() -> int:
     stats = STATS_SVG.read_text(encoding="utf-8")
     original_stats = stats
     stats = set_text_by_id(stats, "v-contrib", str(data["contributions"]))
-    stats = set_text_by_id(stats, "v-year", str(data["year"]))
     stats = set_text_by_id(stats, "v-repos", str(data["repos"]))
     stats = set_text_by_id(stats, "v-langs", str(data["languages"]))
     stats = set_text_by_id(stats, "v-prs", str(data["prs"]))
@@ -288,7 +287,7 @@ def main() -> int:
         changed.append(LANGS_SVG.name)
 
     print(
-        f"contributions({data['year']})={data['contributions']} repos={data['repos']} "
+        f"contributions(12mo)={data['contributions']} repos={data['repos']} "
         f"languages={data['languages']} prs={data['prs']}"
     )
     for s in slices:
