@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ⌁ Animated terminal banner ⌁ -->
-<img src="./cadden-banner.svg?v=19" alt="Cadden Chua — Software & AI/ML" width="100%"/>
+<img src="./cadden-banner.svg?v=21" alt="Cadden Chua — Software &amp; AI/ML" width="100%"/>
 
 </div>
 
@@ -12,7 +12,7 @@
 <td width="40%" align="center" valign="middle">
 
 <!-- 🪪 Credential card on a swinging lanyard -->
-<img src="./cadden-lanyard.svg?v=19" alt="Cadden Chua credential card" width="300"/>
+<img src="./cadden-lanyard.svg?v=21" alt="Cadden Chua ID card: software and AI/ML, student in Singapore" width="300"/>
 
 </td>
 <td width="60%" valign="middle">
@@ -86,13 +86,13 @@ Always up for collabs, internships, or a good conversation about tech.
 
 ### ✦ By the Numbers
 
-<img src="./cadden-stats.svg?v=19" alt="GitHub stats card" height="360"/>
-<img src="./cadden-langs.svg?v=19" alt="Top languages card" height="360"/>
+<img src="./cadden-stats.svg?v=21" alt="GitHub stats: 379 commits, 12 repositories, 8 languages, 6 pull requests" height="360"/>
+<img src="./cadden-langs.svg?v=21" alt="Top languages: TypeScript 47.7%, Java 30.8%, Python 7.5%, HTML 6.8%, CSS 3.6%, JavaScript 3.3%, other 0.4%" height="360"/>
 
 <br/><br/>
 
 ### 🐍 Watch the snake eat my contributions
 
-<img src="https://raw.githubusercontent.com/cadzchua/cadzchua/output/github-snake-dark.svg?v=2" alt="Contribution snake"/>
+<img src="https://raw.githubusercontent.com/cadzchua/cadzchua/output/github-snake-dark.svg" alt="Contribution snake"/>
 
 </div>
