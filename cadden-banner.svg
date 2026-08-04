@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="1000" height="240" role="img" aria-label="Cadden Chua &#8212; software and AI/ML">
+<title>Cadden Chua &#8212; banner</title>
+<defs>
+<style type="text/css"><![CDATA[
+text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
+@keyframes typeA{0%{width:0}22%,100%{width:470px}}
+@keyframes typeB{0%,26%{width:0}50%,100%{width:560px}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bar{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+@keyframes drift{from{transform:translateY(-40px)}to{transform:translateY(280px)}}
+@keyframes sweep{0%{transform:translateX(-260px)}60%,100%{transform:translateX(1060px)}}
+.tA{animation:typeA 4.2s steps(24) 0.3s forwards}
+.tB{animation:typeB 4.2s steps(30) 0.3s forwards}
+.r1{opacity:0;animation:rise .55s ease-out 2.5s forwards}
+.r2{opacity:0;animation:rise .55s ease-out 2.75s forwards}
+.r3{opacity:0;animation:rise .55s ease-out 3s forwards}
+.b{transform-box:fill-box;transform-origin:bottom;animation:bar 1.9s ease-in-out infinite}
+.d{animation:drift 9s linear infinite}
+.sw{animation:sweep 7s ease-in-out 1s infinite}
+]]></style>
+
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%" stop-color="#0f1a22"/><stop offset="50%" stop-color="#0d1117"/><stop offset="100%" stop-color="#010409"/>
+</linearGradient>
+<linearGradient id="wordmark" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0%" stop-color="#e6edf3"/>
+  <stop offset="55%"><animate attributeName="stop-color" values="#22d3ee;#4ade80;#38bdf8;#22d3ee" dur="8s" repeatCount="indefinite"/></stop>
+  <stop offset="100%"><animate attributeName="stop-color" values="#4ade80;#38bdf8;#22d3ee;#4ade80" dur="8s" repeatCount="indefinite"/></stop>
+</linearGradient>
+<linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0%" stop-color="#22d3ee" stop-opacity=".9"/><stop offset="60%" stop-color="#4ade80" stop-opacity=".5"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="gloss" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/><stop offset="50%" stop-color="#22d3ee" stop-opacity=".07"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="orb" cx=".5" cy=".5"><stop offset="0%" stop-color="#22d3ee" stop-opacity=".18"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+
+<pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+  <path d="M20 0H0V20" fill="none" stroke="#22d3ee" stroke-opacity=".045" stroke-width="1"/>
+</pattern>
+
+<filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="frame"><rect x="0" y="0" width="1000" height="240" rx="16"/></clipPath>
+<clipPath id="lineA"><rect class="tA" x="42" y="150" width="0" height="22"/></clipPath>
+<clipPath id="lineB"><rect class="tB" x="42" y="182" width="0" height="22"/></clipPath>
+</defs>
+
+<rect width="1000" height="240" rx="16" fill="url(#bg)" stroke="#21262d" stroke-width="1.5"/>
+<g clip-path="url(#frame)">
+  <rect width="1000" height="240" fill="url(#grid)"/>
+  <ellipse cx="810" cy="120" rx="240" ry="170" fill="url(#orb)"/>
+  <rect class="sw" x="-260" y="0" width="260" height="240" fill="url(#gloss)"/>
+
+  <!-- falling glyph columns -->
+  <g font-size="12" fill="#4ade80" fill-opacity=".16">
+    <g class="d" style="animation-delay:0s"><text x="646" y="0">1</text><text x="646" y="26">0</text><text x="646" y="52">1</text><text x="646" y="78">1</text></g>
+    <g class="d" style="animation-delay:2.4s"><text x="700" y="0">0</text><text x="700" y="26">1</text><text x="700" y="52">0</text><text x="700" y="78">1</text></g>
+    <g class="d" style="animation-delay:4.6s"><text x="754" y="0">1</text><text x="754" y="26">1</text><text x="754" y="52">0</text><text x="754" y="78">0</text></g>
+    <g class="d" style="animation-delay:1.3s"><text x="944" y="0">0</text><text x="944" y="26">0</text><text x="944" y="52">1</text><text x="944" y="78">0</text></g>
+  </g>
+
+  <!-- title bar -->
+  <rect x="0" y="0" width="1000" height="36" fill="#010409" fill-opacity=".65"/>
+  <line x1="0" y1="36" x2="1000" y2="36" stroke="#21262d" stroke-width="1"/>
+  <circle cx="26" cy="18" r="5" fill="#ff5f56"/>
+  <circle cx="44" cy="18" r="5" fill="#ffbd2e"/>
+  <circle cx="62" cy="18" r="5" fill="#27c93f"/>
+  <text x="88" y="22" font-size="11.5" fill="#7d8590" letter-spacing="1">cadzchua@github: ~</text>
+
+  <!-- wordmark -->
+  <text x="40" y="106" font-size="46" font-weight="bold" letter-spacing="6" fill="url(#wordmark)" filter="url(#glow)">CADDEN CHUA</text>
+  <rect x="42" y="120" width="470" height="2" fill="url(#rule)"/>
+
+  <!-- typed lines -->
+  <g clip-path="url(#lineA)">
+    <text x="42" y="166" font-size="14.5" fill="#7d8590">$ <tspan fill="#22d3ee">whoami</tspan> &#8594; student &#183; singapore</text>
+  </g>
+  <g clip-path="url(#lineB)">
+    <text x="42" y="198" font-size="14.5" fill="#7d8590">$ <tspan fill="#22d3ee">cat</tspan> interests.txt &#8594; <tspan fill="#4ade80">software &#183; ai/ml &#183; llms</tspan></text>
+  </g>
+  <!-- activity bars -->
+  <g fill="#22d3ee" fill-opacity=".55">
+    <rect class="b" x="820" y="140" width="8" height="60" rx="2" style="animation-delay:0s"/>
+    <rect class="b" x="836" y="140" width="8" height="60" rx="2" style="animation-delay:.18s"/>
+    <rect class="b" x="852" y="140" width="8" height="60" rx="2" style="animation-delay:.36s"/>
+    <rect class="b" x="868" y="140" width="8" height="60" rx="2" style="animation-delay:.54s"/>
+    <rect class="b" x="884" y="140" width="8" height="60" rx="2" style="animation-delay:.72s"/>
+    <rect class="b" x="900" y="140" width="8" height="60" rx="2" style="animation-delay:.9s"/>
+    <rect class="b" x="916" y="140" width="8" height="60" rx="2" style="animation-delay:1.08s"/>
+    <rect class="b" x="932" y="140" width="8" height="60" rx="2" style="animation-delay:1.26s"/>
+  </g>
+
+  <!-- tags -->
+  <g font-size="11" letter-spacing="1.4">
+    <g class="r1"><rect x="820" y="72" width="86" height="24" rx="12" fill="#22d3ee" fill-opacity=".1" stroke="#22d3ee" stroke-opacity=".45"/><text x="863" y="88" text-anchor="middle" fill="#22d3ee">TYPESCRIPT</text></g>
+    <g class="r2"><rect x="820" y="102" width="60" height="24" rx="12" fill="#4ade80" fill-opacity=".1" stroke="#4ade80" stroke-opacity=".45"/><text x="850" y="118" text-anchor="middle" fill="#4ade80">JAVA</text></g>
+    <g class="r3"><rect x="886" y="102" width="70" height="24" rx="12" fill="#38bdf8" fill-opacity=".1" stroke="#38bdf8" stroke-opacity=".45"/><text x="921" y="118" text-anchor="middle" fill="#38bdf8">PYTHON</text></g>
+  </g>
+</g>
+</svg>

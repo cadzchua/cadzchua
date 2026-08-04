@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="300" height="450" role="img" aria-label="Cadden Chua most used languages photocard">
+<title>Languages photocard &#8212; cadzchua</title>
+<defs>
+<style type="text/css"><![CDATA[
+.mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
+.disp{font-family:'Trebuchet MS','Gill Sans',Avenir,'Segoe UI',sans-serif}
+@keyframes holoSweep{0%{transform:translateX(-360px) skewX(-20deg)}55%,100%{transform:translateX(360px) skewX(-20deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}}
+@keyframes tilt{0%,100%{transform:rotate(-.5deg)}50%{transform:rotate(.5deg)}}
+.holo{animation:holoSweep 5.5s ease-in-out 1s infinite}
+.r{opacity:0;animation:rise .5s ease-out forwards}
+.pop{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .65s cubic-bezier(.34,1.4,.6,1) 1.5s forwards}
+.card{transform-origin:150px 225px;animation:tilt 7s ease-in-out infinite}
+]]></style>
+
+<linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%"><animate attributeName="stop-color" values="#22d3ee;#a78bfa;#f0abfc;#4ade80;#22d3ee" dur="9s" repeatCount="indefinite"/></stop>
+  <stop offset="50%"><animate attributeName="stop-color" values="#f0abfc;#4ade80;#22d3ee;#a78bfa;#f0abfc" dur="9s" repeatCount="indefinite"/></stop>
+  <stop offset="100%"><animate attributeName="stop-color" values="#4ade80;#22d3ee;#a78bfa;#f0abfc;#4ade80" dur="9s" repeatCount="indefinite"/></stop>
+</linearGradient>
+<linearGradient id="photo" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%" stop-color="#141d27"/><stop offset="55%" stop-color="#0d1117"/><stop offset="100%" stop-color="#010409"/>
+</linearGradient>
+<linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+  <stop offset="35%" stop-color="#a78bfa" stop-opacity=".10"/>
+  <stop offset="50%" stop-color="#fff" stop-opacity=".18"/>
+  <stop offset="65%" stop-color="#22d3ee" stop-opacity=".10"/>
+  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+</linearGradient>
+<pattern id="grid" width="15" height="15" patternUnits="userSpaceOnUse">
+  <path d="M15 0H0V15" fill="none" stroke="#22d3ee" stroke-opacity=".05" stroke-width="1"/>
+</pattern>
+<filter id="drop" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter>
+<clipPath id="inner"><rect x="9" y="9" width="282" height="432" rx="13"/></clipPath>
+</defs>
+
+<g class="card" filter="url(#drop)">
+  <rect x="1" y="1" width="298" height="448" rx="19" fill="url(#foil)"/>
+  <rect x="9" y="9" width="282" height="432" rx="13" fill="url(#photo)"/>
+  <rect x="9" y="9" width="282" height="432" rx="13" fill="url(#grid)"/>
+
+  <g clip-path="url(#inner)">
+    <rect class="holo" x="-60" y="0" width="120" height="450" fill="url(#sheen)"/>
+  </g>
+
+  <text class="mono" x="26" y="38" font-size="8.5" letter-spacing="2.4" fill="#7d8590">TOP LANGUAGES</text>
+  <text class="mono" x="274" y="38" text-anchor="end" font-size="8.5" letter-spacing="1.6" fill="url(#foil)">No. 03 / 03</text>
+  <line x1="26" y1="50" x2="274" y2="50" stroke="#21262d" stroke-width="1"/>
+
+  <!-- donut -->
+  <g transform="translate(150,132) rotate(-90)" fill="none" stroke-width="22">
+    <circle r="52" stroke="#161b22"/>
+    <circle r="52" stroke="#3178c6" stroke-dasharray="0 326.7" stroke-dashoffset="0">
+      <animate attributeName="stroke-dasharray" to="155.7 326.7" dur="1.1s" begin=".4s" fill="freeze"/></circle>
+    <circle r="52" stroke="#b07219" stroke-dasharray="0 326.7" stroke-dashoffset="-155.7">
+      <animate attributeName="stroke-dasharray" to="100.5 326.7" dur="1.1s" begin=".55s" fill="freeze"/></circle>
+    <circle r="52" stroke="#3572a5" stroke-dasharray="0 326.7" stroke-dashoffset="-256.2">
+      <animate attributeName="stroke-dasharray" to="24.6 326.7" dur="1.1s" begin=".7s" fill="freeze"/></circle>
+    <circle r="52" stroke="#e34c26" stroke-dasharray="0 326.7" stroke-dashoffset="-280.8">
+      <animate attributeName="stroke-dasharray" to="22.3 326.7" dur="1.1s" begin=".8s" fill="freeze"/></circle>
+    <circle r="52" stroke="#563d7c" stroke-dasharray="0 326.7" stroke-dashoffset="-303.1">
+      <animate attributeName="stroke-dasharray" to="11.6 326.7" dur="1.1s" begin=".9s" fill="freeze"/></circle>
+    <circle r="52" stroke="#f1e05a" stroke-dasharray="0 326.7" stroke-dashoffset="-314.7">
+      <animate attributeName="stroke-dasharray" to="10.7 326.7" dur="1.1s" begin="1s" fill="freeze"/></circle>
+    <circle r="52" stroke="#7d8590" stroke-dasharray="0 326.7" stroke-dashoffset="-325.4">
+      <animate attributeName="stroke-dasharray" to="1.3 326.7" dur="1.1s" begin="1.1s" fill="freeze"/></circle>
+  </g>
+  <g class="pop">
+    <text class="disp" x="150" y="130" text-anchor="middle" font-size="24" font-weight="bold" fill="#e6edf3">1.01</text>
+    <text class="mono" x="150" y="148" text-anchor="middle" font-size="7.5" letter-spacing="2" fill="#a78bfa">MB INDEXED</text>
+  </g>
+
+  <!-- legend -->
+  <g class="mono" font-size="9.5">
+    <g class="r" style="animation-delay:.9s">
+      <circle cx="34" cy="248" r="4.5" fill="#3178c6"/><text x="46" y="251" fill="#e6edf3">TypeScript</text><text x="140" y="251" text-anchor="end" fill="#7d8590">47.7%</text>
+    </g>
+    <g class="r" style="animation-delay:.98s">
+      <circle cx="164" cy="248" r="4.5" fill="#b07219"/><text x="176" y="251" fill="#e6edf3">Java</text><text x="270" y="251" text-anchor="end" fill="#7d8590">30.8%</text>
+    </g>
+    <g class="r" style="animation-delay:1.06s">
+      <circle cx="34" cy="274" r="4.5" fill="#3572a5"/><text x="46" y="277" fill="#e6edf3">Python</text><text x="140" y="277" text-anchor="end" fill="#7d8590">7.5%</text>
+    </g>
+    <g class="r" style="animation-delay:1.14s">
+      <circle cx="164" cy="274" r="4.5" fill="#e34c26"/><text x="176" y="277" fill="#e6edf3">HTML</text><text x="270" y="277" text-anchor="end" fill="#7d8590">6.8%</text>
+    </g>
+    <g class="r" style="animation-delay:1.22s">
+      <circle cx="34" cy="300" r="4.5" fill="#563d7c"/><text x="46" y="303" fill="#e6edf3">CSS</text><text x="140" y="303" text-anchor="end" fill="#7d8590">3.6%</text>
+    </g>
+    <g class="r" style="animation-delay:1.3s">
+      <circle cx="164" cy="300" r="4.5" fill="#f1e05a"/><text x="176" y="303" fill="#e6edf3">JavaScript</text><text x="270" y="303" text-anchor="end" fill="#7d8590">3.3%</text>
+    </g>
+    <g class="r" style="animation-delay:1.38s">
+      <circle cx="34" cy="326" r="4.5" fill="#7d8590"/><text x="46" y="329" fill="#e6edf3">Other</text><text x="140" y="329" text-anchor="end" fill="#7d8590">0.4%</text>
+    </g>
+  </g>
+
+  <line x1="26" y1="344" x2="274" y2="344" stroke="#21262d" stroke-width="1" stroke-dasharray="3 4"/>
+  <text class="disp" x="150" y="382" text-anchor="middle" font-size="25" font-weight="bold" letter-spacing="2.2" fill="url(#foil)">CADDEN CHUA</text>
+  <text class="mono" x="150" y="404" text-anchor="middle" font-size="9" letter-spacing="3" fill="#7d8590">@CADZCHUA</text>
+  <text class="mono" x="150" y="426" text-anchor="middle" font-size="7.5" letter-spacing="2.6" fill="#4ade80">11 REPOS INDEXED</text>
+
+</g>
+</svg>
