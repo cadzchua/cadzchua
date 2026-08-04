@@ -64,8 +64,9 @@
     <circle class="ring" r="54" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round"
             stroke-dasharray="339" stroke-dashoffset="339" transform="rotate(-90)" filter="url(#glow)"/>
     <g class="pop">
-      <text id="v-commits" class="disp" y="5" text-anchor="middle" font-size="36" font-weight="bold" fill="#e6edf3">396</text>
-      <text class="mono" y="26" text-anchor="middle" font-size="8" letter-spacing="2.6" fill="#a78bfa">COMMITS</text>
+      <text id="v-contrib" class="disp" y="1" text-anchor="middle" font-size="34" font-weight="bold" fill="#e6edf3">985</text>
+      <text class="mono" y="21" text-anchor="middle" font-size="7.5" letter-spacing="1.4" fill="#a78bfa">CONTRIBUTIONS</text>
+      <text id="v-year" class="mono" y="34" text-anchor="middle" font-size="7.5" letter-spacing="2.4" fill="#7d8590">2026</text>
     </g>
   </g>
 

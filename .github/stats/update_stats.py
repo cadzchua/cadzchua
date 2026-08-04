@@ -15,6 +15,7 @@ Exit codes: 0 = wrote changes or already current, 1 = failed to fetch.
 
 from __future__ import annotations
 
+import datetime as dt
 import json
 import math
 import os
@@ -87,6 +88,71 @@ def all_repos() -> list[dict]:
     return repos
 
 
+def graphql_contributions(year: int) -> int:
+    """Total contributions for the calendar year. Needs a token; Actions supplies one."""
+    query = """
+      query($login:String!,$from:DateTime!,$to:DateTime!){
+        user(login:$login){
+          contributionsCollection(from:$from,to:$to){
+            contributionCalendar{ totalContributions }
+          }
+        }
+      }"""
+    payload = json.dumps({
+        "query": query,
+        "variables": {
+            "login": USER,
+            "from": f"{year}-01-01T00:00:00Z",
+            "to": f"{year}-12-31T23:59:59Z",
+        },
+    }).encode()
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=payload,
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Content-Type": "application/json",
+            "User-Agent": f"{USER}-profile-stats",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        body = json.load(resp)
+    if "errors" in body:
+        raise RuntimeError(body["errors"])
+    return body["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+
+
+def calendar_contributions(year: int) -> int:
+    """Fallback: sum the public contribution calendar. No token required."""
+    url = (
+        f"https://github.com/users/{USER}/contributions"
+        f"?from={year}-01-01&to={year}-12-31"
+    )
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        html = resp.read().decode("utf-8", "replace")
+    days = re.findall(r"<tool-tip[^>]*>([^<]*)</tool-tip>", html)
+    if not days:
+        raise RuntimeError("contribution calendar markup not recognised")
+    total = 0
+    for tip in days:
+        m = re.match(r"\s*(\d[\d,]*)\s+contribution", tip)
+        if m:
+            total += int(m.group(1).replace(",", ""))
+    return total
+
+
+def contributions_this_year() -> tuple[int, int]:
+    """(year, total). Prefers GraphQL, falls back to scraping the calendar."""
+    year = dt.date.today().year
+    if TOKEN:
+        try:
+            return year, graphql_contributions(year)
+        except Exception as exc:  # noqa: BLE001 - fall back rather than fail the run
+            print(f"graphql contributions failed ({exc}); using calendar", file=sys.stderr)
+    return year, calendar_contributions(year)
+
+
 def collect() -> dict:
     profile = api(f"users/{USER}")
     repos = all_repos()
@@ -97,11 +163,15 @@ def collect() -> dict:
         for lang, count in api(f"repos/{USER}/{repo['name']}/languages").items():
             byte_totals[lang] = byte_totals.get(lang, 0) + count
 
-    commits = api("search/commits", {"q": f"author:{USER}", "per_page": 1})["total_count"]
     prs = api("search/issues", {"q": f"author:{USER} type:pr", "per_page": 1})["total_count"]
+    year, contributions = contributions_this_year()
 
     return {
-        "commits": commits,
+        # the contribution calendar, i.e. the same figure GitHub renders above the
+        # README. search/commits only indexes default branches of public non-fork
+        # repos, so it reported well under half of this.
+        "contributions": contributions,
+        "year": year,
         "repos": profile["public_repos"],
         "languages": len(byte_totals),
         "prs": prs,
@@ -203,7 +273,8 @@ def main() -> int:
 
     stats = STATS_SVG.read_text(encoding="utf-8")
     original_stats = stats
-    stats = set_text_by_id(stats, "v-commits", str(data["commits"]))
+    stats = set_text_by_id(stats, "v-contrib", str(data["contributions"]))
+    stats = set_text_by_id(stats, "v-year", str(data["year"]))
     stats = set_text_by_id(stats, "v-repos", str(data["repos"]))
     stats = set_text_by_id(stats, "v-langs", str(data["languages"]))
     stats = set_text_by_id(stats, "v-prs", str(data["prs"]))
@@ -226,7 +297,7 @@ def main() -> int:
         README.write_text(bump_cache_tags(readme, changed), encoding="utf-8", newline="\n")
 
     print(
-        f"commits={data['commits']} repos={data['repos']} "
+        f"contributions({data['year']})={data['contributions']} repos={data['repos']} "
         f"languages={data['languages']} prs={data['prs']}"
     )
     for s in slices:
