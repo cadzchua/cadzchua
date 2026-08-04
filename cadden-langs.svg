@@ -7,11 +7,9 @@
 /* drifting glare rather than a sweep, so it doesn't twin with the stats card */
 @keyframes glare{0%{transform:translate(-80px,-55px);opacity:0}28%{opacity:.95}62%{opacity:.95}100%{transform:translate(90px,65px);opacity:0}}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}}
 @keyframes tilt{0%,100%{transform:rotate(-.5deg)}50%{transform:rotate(.5deg)}}
 .holo{animation:glare 7.5s ease-in-out 1.4s infinite}
 .r{opacity:0;animation:rise .5s ease-out forwards}
-.pop{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .65s cubic-bezier(.34,1.4,.6,1) 1.5s forwards}
 .card{transform-origin:150px 180px;animation:tilt 7s ease-in-out infinite}
 ]]></style>
 
@@ -49,7 +47,7 @@
   <line x1="26" y1="50" x2="274" y2="50" stroke="#21262d" stroke-width="1"/>
 
   <!-- donut: segments drawn from real byte counts across 11 source repos -->
-  <g transform="translate(150,135) rotate(-90)" fill="none" stroke-width="22">
+  <g transform="translate(150,135) rotate(-90)" fill="none" stroke-width="28">
     <circle r="52" stroke="#161b22"/>
     <circle r="52" stroke="#3178c6" stroke-dasharray="0 326.7" stroke-dashoffset="0">
       <animate attributeName="stroke-dasharray" to="155.7 326.7" dur="1.1s" begin=".4s" fill="freeze"/></circle>
@@ -66,11 +64,6 @@
     <circle r="52" stroke="#7d8590" stroke-dasharray="0 326.7" stroke-dashoffset="-325.4">
       <animate attributeName="stroke-dasharray" to="1.3 326.7" dur="1.1s" begin="1.1s" fill="freeze"/></circle>
   </g>
-  <g class="pop">
-    <text class="disp" x="150" y="133" text-anchor="middle" font-size="25" font-weight="bold" fill="#e6edf3">1.01</text>
-    <text class="mono" x="150" y="152" text-anchor="middle" font-size="7.5" letter-spacing="2.2" fill="#a78bfa">MB INDEXED</text>
-  </g>
-
   <g class="mono" font-size="10">
     <g class="r" style="animation-delay:.9s">
       <circle cx="34" cy="229" r="4.5" fill="#3178c6"/><text x="46" y="232" fill="#e6edf3">TypeScript</text><text x="140" y="232" text-anchor="end" fill="#7d8590">47.7%</text>

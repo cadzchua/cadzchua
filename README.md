@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ⌁ Animated terminal banner ⌁ -->
-<img src="./cadden-banner.svg?v=8" alt="Cadden Chua — Software & AI/ML" width="100%"/>
+<img src="./cadden-banner.svg?v=10" alt="Cadden Chua — Software & AI/ML" width="100%"/>
 
 </div>
 
@@ -12,7 +12,7 @@
 <td width="40%" align="center" valign="middle">
 
 <!-- 🪪 Credential card on a swinging lanyard -->
-<img src="./cadden-lanyard.svg?v=8" alt="Cadden Chua credential card" width="300"/>
+<img src="./cadden-lanyard.svg?v=10" alt="Cadden Chua credential card" width="300"/>
 
 </td>
 <td width="60%" valign="middle">
@@ -44,14 +44,41 @@ Always up for collabs, internships, or a good conversation about tech.
 
 </div>
 
-| Project | What it is | Tech |
-|:---|:---|:---|
-| [**gitroast**](https://github.com/cadzchua/gitroast) | Roasts your commit history | `TypeScript` `LLM` |
-| [**code-exp-2026**](https://github.com/cadzchua/code-exp-2026) | Hackathon build | `TypeScript` |
-| [**LocateTheShip**](https://github.com/cadzchua/LocateTheShip) | Live vessel tracking from an open API | `Python` `REST` |
-| [**CommViz**](https://github.com/cadzchua/CommViz) | Network graph visualiser | `HTML` `JS` |
-| [**SC2002**](https://github.com/cadzchua/SC2002_Group_Assignment_25S1) | OODP group assignment | `Java` |
-| [**portfolio**](https://github.com/cadzchua/portfolio) | Personal site | `TypeScript` `React` |
+<!-- align="center" on the table itself: a wrapping div only gives text-align,
+     which cannot centre a block-level table -->
+<table align="center">
+<tr><th align="left">Project</th><th align="left">What it is</th><th align="left">Tech</th></tr>
+<tr>
+  <td><a href="https://github.com/cadzchua/gitroast"><b>gitroast</b></a></td>
+  <td>Roasts your commit history</td>
+  <td><code>TypeScript</code> <code>LLM</code></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/cadzchua/code-exp-2026"><b>code-exp-2026</b></a></td>
+  <td>Hackathon build</td>
+  <td><code>TypeScript</code></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/cadzchua/LocateTheShip"><b>LocateTheShip</b></a></td>
+  <td>Live vessel tracking from an open API</td>
+  <td><code>Python</code> <code>REST</code></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/cadzchua/CommViz"><b>CommViz</b></a></td>
+  <td>Network graph visualiser</td>
+  <td><code>HTML</code> <code>JS</code></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/cadzchua/SC2002_Group_Assignment_25S1"><b>SC2002</b></a></td>
+  <td>OODP group assignment</td>
+  <td><code>Java</code></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/cadzchua/portfolio"><b>portfolio</b></a></td>
+  <td>Personal site</td>
+  <td><code>TypeScript</code> <code>React</code></td>
+</tr>
+</table>
 
 <br/>
 
@@ -59,8 +86,8 @@ Always up for collabs, internships, or a good conversation about tech.
 
 ### ✦ By the Numbers
 
-<img src="./cadden-stats.svg?v=8" alt="GitHub stats card" height="360"/>
-<img src="./cadden-langs.svg?v=8" alt="Top languages card" height="360"/>
+<img src="./cadden-stats.svg?v=10" alt="GitHub stats card" height="360"/>
+<img src="./cadden-langs.svg?v=10" alt="Top languages card" height="360"/>
 
 <br/><br/>
 
