@@ -64,7 +64,7 @@
     <circle class="ring" r="54" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round"
             stroke-dasharray="339" stroke-dashoffset="339" transform="rotate(-90)" filter="url(#glow)"/>
     <g class="pop">
-      <text class="disp" y="5" text-anchor="middle" font-size="36" font-weight="bold" fill="#e6edf3">379</text>
+      <text id="v-commits" class="disp" y="5" text-anchor="middle" font-size="36" font-weight="bold" fill="#e6edf3">396</text>
       <text class="mono" y="26" text-anchor="middle" font-size="8" letter-spacing="2.6" fill="#a78bfa">COMMITS</text>
     </g>
   </g>
@@ -72,15 +72,15 @@
   <g class="mono" font-size="11.5">
     <g class="r" style="animation-delay:.6s">
       <text x="30" y="244" fill="#22d3ee">&#9634;</text><text x="50" y="244" fill="#7d8590">Repositories</text>
-      <text x="270" y="244" text-anchor="end" fill="#e6edf3" font-weight="bold">12</text>
+      <text id="v-repos" x="270" y="244" text-anchor="end" fill="#e6edf3" font-weight="bold">12</text>
     </g>
     <g class="r" style="animation-delay:.74s">
       <text x="30" y="276" fill="#22d3ee">&#9672;</text><text x="50" y="276" fill="#7d8590">Languages</text>
-      <text x="270" y="276" text-anchor="end" fill="#e6edf3" font-weight="bold">8</text>
+      <text id="v-langs" x="270" y="276" text-anchor="end" fill="#e6edf3" font-weight="bold">8</text>
     </g>
     <g class="r" style="animation-delay:.88s">
       <text x="30" y="308" fill="#22d3ee">&#8631;</text><text x="50" y="308" fill="#7d8590">Pull Requests</text>
-      <text x="270" y="308" text-anchor="end" fill="#e6edf3" font-weight="bold">6</text>
+      <text id="v-prs" x="270" y="308" text-anchor="end" fill="#e6edf3" font-weight="bold">6</text>
     </g>
   </g>
 </g>

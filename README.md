@@ -86,8 +86,8 @@ Always up for collabs, internships, or a good conversation about tech.
 
 ### ✦ By the Numbers
 
-<img src="./cadden-stats.svg?v=22" alt="GitHub stats: 379 commits, 12 repositories, 8 languages, 6 pull requests" height="360"/>
-<img src="./cadden-langs.svg?v=22" alt="Top languages: TypeScript 47.7%, Java 30.8%, Python 7.5%, HTML 6.8%, CSS 3.6%, JavaScript 3.3%, other 0.4%" height="360"/>
+<img src="./cadden-stats.svg?v=23" alt="GitHub stats: 379 commits, 12 repositories, 8 languages, 6 pull requests" height="360"/>
+<img src="./cadden-langs.svg?v=23" alt="Top languages: TypeScript 47.7%, Java 30.8%, Python 7.5%, HTML 6.8%, CSS 3.6%, JavaScript 3.3%, other 0.4%" height="360"/>
 
 <br/><br/>
 
