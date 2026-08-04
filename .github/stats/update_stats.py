@@ -7,9 +7,6 @@ rather than regenerating the files:
   cadden-stats.svg   the text of #v-contrib, #v-year, #v-repos, #v-langs, #v-prs
   cadden-langs.svg   everything between <!--gen:donut--> and <!--gen:legend--> markers
 
-It also bumps the ?v= cache tag on those two images in README.md, because GitHub's
-image proxy keys on URL: without a new tag it will keep serving the old card.
-
 Exit codes: 0 = wrote changes or already current, 1 = failed to fetch.
 """
 
@@ -32,7 +29,6 @@ ROOT = Path(__file__).resolve().parents[2]
 
 STATS_SVG = ROOT / "cadden-stats.svg"
 LANGS_SVG = ROOT / "cadden-langs.svg"
-README = ROOT / "README.md"
 
 # Donut geometry, must match the card: <circle r="52"> inside translate(150,135)
 RADIUS = 52.0
@@ -258,14 +254,6 @@ def set_text_by_id(svg: str, node_id: str, value: str) -> str:
     return pattern.sub(lambda m: m.group(1) + value + m.group(2), svg)
 
 
-def bump_cache_tags(readme: str, names: list[str]) -> str:
-    """GitHub's image proxy keys on URL, so a changed card needs a changed ?v=."""
-    for name in names:
-        pattern = re.compile(rf"({re.escape(name)}\?v=)(\d+)")
-        readme = pattern.sub(lambda m: m.group(1) + str(int(m.group(2)) + 1), readme)
-    return readme
-
-
 def main() -> int:
     try:
         data = collect()
@@ -298,10 +286,6 @@ def main() -> int:
     if langs != original_langs:
         LANGS_SVG.write_text(langs, encoding="utf-8", newline="\n")
         changed.append(LANGS_SVG.name)
-
-    if changed:
-        readme = README.read_text(encoding="utf-8")
-        README.write_text(bump_cache_tags(readme, changed), encoding="utf-8", newline="\n")
 
     print(
         f"contributions({data['year']})={data['contributions']} repos={data['repos']} "
