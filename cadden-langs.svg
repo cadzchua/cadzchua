@@ -34,8 +34,9 @@
 <clipPath id="inner"><rect x="9" y="9" width="282" height="342" rx="13"/></clipPath>
 </defs>
 
-<g class="card" filter="url(#drop)">
-  <rect x="1" y="1" width="298" height="358" rx="19" fill="url(#foil)"/>
+<!-- shadow on the rect only: filtering the group rasterises the text and blurs it -->
+<g class="card">
+  <rect x="1" y="1" width="298" height="358" rx="19" fill="url(#foil)" filter="url(#drop)"/>
   <rect x="9" y="9" width="282" height="342" rx="13" fill="url(#photo)"/>
   <rect x="9" y="9" width="282" height="342" rx="13" fill="url(#grid)"/>
 
