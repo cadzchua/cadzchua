@@ -60,13 +60,15 @@
   <path d="M242 0 L270 0 L221 260 L201 254 Z" fill="url(#strap)"/>
   <path d="M164 0 L208 256" stroke="#0d1117" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="5 5" fill="none"/>
   <path d="M256 0 L212 256" stroke="#0d1117" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="5 5" fill="none"/>
-  <g class="mono" fill="#0d1117" fill-opacity=".55" font-size="9" letter-spacing="1.6" text-anchor="middle">
-    <text x="164" y="52" transform="rotate(9 164 52)">CADZCHUA</text>
-    <text x="180" y="140" transform="rotate(9 180 140)">CADZCHUA</text>
-    <text x="196" y="228" transform="rotate(9 196 228)">CADZCHUA</text>
-    <text x="256" y="52" transform="rotate(-9 256 52)">CADZCHUA</text>
-    <text x="240" y="140" transform="rotate(-9 240 140)">CADZCHUA</text>
-    <text x="224" y="228" transform="rotate(-9 224 228)">CADZCHUA</text>
+  <!-- lengthwise along each strap. 80.25deg = atan2(256,44), the strap's own angle;
+       99.75deg mirrors it on the right. Printed webbing reads down the strap, not across it. -->
+  <g class="mono" fill="#0d1117" fill-opacity=".6" font-size="9" letter-spacing="1.6" text-anchor="middle" dominant-baseline="middle">
+    <text x="170.2" y="35.8"  transform="rotate(80.25 170.2 35.8)">CADZCHUA</text>
+    <text x="183.4" y="112.6" transform="rotate(80.25 183.4 112.6)">CADZCHUA</text>
+    <text x="196.6" y="189.4" transform="rotate(80.25 196.6 189.4)">CADZCHUA</text>
+    <text x="249.8" y="35.8"  transform="rotate(99.75 249.8 35.8)">CADZCHUA</text>
+    <text x="236.6" y="112.6" transform="rotate(99.75 236.6 112.6)">CADZCHUA</text>
+    <text x="223.4" y="189.4" transform="rotate(99.75 223.4 189.4)">CADZCHUA</text>
   </g>
 
   <!-- clasp -->
