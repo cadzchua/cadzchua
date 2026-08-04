@@ -1,19 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="300" height="450" role="img" aria-label="Cadden Chua GitHub stats photocard">
-<title>Stats photocard &#8212; cadzchua</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360" role="img" aria-label="Cadden Chua GitHub statistics">
+<title>GitHub stats &#8212; cadzchua</title>
 <defs>
 <style type="text/css"><![CDATA[
 .mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
 .disp{font-family:'Trebuchet MS','Gill Sans',Avenir,'Segoe UI',sans-serif}
-@keyframes holoSweep{0%{transform:translateX(-360px) skewX(-20deg)}55%,100%{transform:translateX(360px) skewX(-20deg)}}
-@keyframes ring{from{stroke-dashoffset:327}to{stroke-dashoffset:92}}
-@keyframes rise{from{opacity:0;transform:translateX(-7px)}to{opacity:1;transform:translateX(0)}}
+/* vertical prism band; end must clear the inner clip (y 9-351) */
+@keyframes prism{0%{transform:translateY(-160px)}52%,100%{transform:translateY(540px)}}
+@keyframes ring{from{stroke-dashoffset:339}to{stroke-dashoffset:95}}
+@keyframes rise{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
 @keyframes pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}}
 @keyframes tilt{0%,100%{transform:rotate(-.5deg)}50%{transform:rotate(.5deg)}}
-.holo{animation:holoSweep 5.5s ease-in-out 1s infinite}
+.holo{animation:prism 6.5s ease-in-out 1.2s infinite}
 .ring{animation:ring 1.9s cubic-bezier(.4,0,.2,1) .5s forwards}
 .r{opacity:0;animation:rise .5s ease-out forwards}
 .pop{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .65s cubic-bezier(.34,1.4,.6,1) 1.5s forwards}
-.card{transform-origin:150px 225px;animation:tilt 7s ease-in-out infinite}
+.card{transform-origin:150px 180px;animation:tilt 7s ease-in-out infinite}
 ]]></style>
 
 <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
@@ -24,11 +25,11 @@
 <linearGradient id="photo" x1="0" y1="0" x2="1" y2="1">
   <stop offset="0%" stop-color="#141d27"/><stop offset="55%" stop-color="#0d1117"/><stop offset="100%" stop-color="#010409"/>
 </linearGradient>
-<linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
   <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
-  <stop offset="35%" stop-color="#a78bfa" stop-opacity=".10"/>
-  <stop offset="50%" stop-color="#fff" stop-opacity=".18"/>
-  <stop offset="65%" stop-color="#22d3ee" stop-opacity=".10"/>
+  <stop offset="30%" stop-color="#22d3ee" stop-opacity=".10"/>
+  <stop offset="50%" stop-color="#fff" stop-opacity=".20"/>
+  <stop offset="70%" stop-color="#a78bfa" stop-opacity=".10"/>
   <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
 </linearGradient>
 <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
@@ -39,61 +40,45 @@
 </pattern>
 <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <filter id="drop" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter>
-<clipPath id="inner"><rect x="9" y="9" width="282" height="432" rx="13"/></clipPath>
+<clipPath id="inner"><rect x="9" y="9" width="282" height="342" rx="13"/></clipPath>
 </defs>
 
 <g class="card" filter="url(#drop)">
-  <!-- holographic foil edge -->
-  <rect x="1" y="1" width="298" height="448" rx="19" fill="url(#foil)"/>
-  <!-- photo well -->
-  <rect x="9" y="9" width="282" height="432" rx="13" fill="url(#photo)"/>
-  <rect x="9" y="9" width="282" height="432" rx="13" fill="url(#grid)"/>
+  <rect x="1" y="1" width="298" height="358" rx="19" fill="url(#foil)"/>
+  <rect x="9" y="9" width="282" height="342" rx="13" fill="url(#photo)"/>
+  <rect x="9" y="9" width="282" height="342" rx="13" fill="url(#grid)"/>
 
   <g clip-path="url(#inner)">
-    <rect class="holo" x="-60" y="0" width="120" height="450" fill="url(#sheen)"/>
+    <rect class="holo" x="9" y="-160" width="282" height="160" fill="url(#sheen)"/>
   </g>
 
-  <!-- collector marks -->
-  <text class="mono" x="26" y="38" font-size="8.5" letter-spacing="2.4" fill="#7d8590">GITHUB &#183; STATS</text>
-  <text class="mono" x="274" y="38" text-anchor="end" font-size="8.5" letter-spacing="1.6" fill="url(#foil)">No. 02 / 03</text>
+  <text class="mono" x="26" y="38" font-size="9" letter-spacing="2.6" fill="#7d8590">GITHUB &#183; STATS</text>
   <line x1="26" y1="50" x2="274" y2="50" stroke="#21262d" stroke-width="1"/>
 
   <!-- commit ring -->
-  <g transform="translate(150,132)">
-    <circle r="52" fill="none" stroke="#1b232c" stroke-width="9"/>
-    <circle class="ring" r="52" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round"
-            stroke-dasharray="327" stroke-dashoffset="327" transform="rotate(-90)" filter="url(#glow)"/>
+  <g transform="translate(150,135)">
+    <circle r="54" fill="none" stroke="#1b232c" stroke-width="9"/>
+    <circle class="ring" r="54" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round"
+            stroke-dasharray="339" stroke-dashoffset="339" transform="rotate(-90)" filter="url(#glow)"/>
     <g class="pop">
-      <text class="disp" y="4" text-anchor="middle" font-size="34" font-weight="bold" fill="#e6edf3">379</text>
-      <text class="mono" y="24" text-anchor="middle" font-size="8" letter-spacing="2.4" fill="#a78bfa">COMMITS</text>
+      <text class="disp" y="5" text-anchor="middle" font-size="36" font-weight="bold" fill="#e6edf3">379</text>
+      <text class="mono" y="26" text-anchor="middle" font-size="8" letter-spacing="2.6" fill="#a78bfa">COMMITS</text>
     </g>
   </g>
 
-  <!-- stat rows -->
-  <g class="mono" font-size="11">
+  <g class="mono" font-size="11.5">
     <g class="r" style="animation-delay:.6s">
-      <text x="30" y="228" fill="#22d3ee">&#9733;</text><text x="48" y="228" fill="#7d8590">Stars Earned</text>
-      <text x="270" y="228" text-anchor="end" fill="#e6edf3" font-weight="bold">4</text>
+      <text x="30" y="244" fill="#22d3ee">&#9634;</text><text x="50" y="244" fill="#7d8590">Repositories</text>
+      <text x="270" y="244" text-anchor="end" fill="#e6edf3" font-weight="bold">12</text>
     </g>
-    <g class="r" style="animation-delay:.72s">
-      <text x="30" y="256" fill="#22d3ee">&#8631;</text><text x="48" y="256" fill="#7d8590">Pull Requests</text>
-      <text x="270" y="256" text-anchor="end" fill="#e6edf3" font-weight="bold">6</text>
+    <g class="r" style="animation-delay:.74s">
+      <text x="30" y="276" fill="#22d3ee">&#9672;</text><text x="50" y="276" fill="#7d8590">Languages</text>
+      <text x="270" y="276" text-anchor="end" fill="#e6edf3" font-weight="bold">8</text>
     </g>
-    <g class="r" style="animation-delay:.84s">
-      <text x="30" y="284" fill="#22d3ee">&#9678;</text><text x="48" y="284" fill="#7d8590">Issues</text>
-      <text x="270" y="284" text-anchor="end" fill="#e6edf3" font-weight="bold">6</text>
-    </g>
-    <g class="r" style="animation-delay:.96s">
-      <text x="30" y="312" fill="#22d3ee">&#9634;</text><text x="48" y="312" fill="#7d8590">Repositories</text>
-      <text x="270" y="312" text-anchor="end" fill="#e6edf3" font-weight="bold">12</text>
+    <g class="r" style="animation-delay:.88s">
+      <text x="30" y="308" fill="#22d3ee">&#8631;</text><text x="50" y="308" fill="#7d8590">Pull Requests</text>
+      <text x="270" y="308" text-anchor="end" fill="#e6edf3" font-weight="bold">6</text>
     </g>
   </g>
-
-  <!-- name plate -->
-  <line x1="26" y1="344" x2="274" y2="344" stroke="#21262d" stroke-width="1" stroke-dasharray="3 4"/>
-  <text class="disp" x="150" y="382" text-anchor="middle" font-size="25" font-weight="bold" letter-spacing="2.2" fill="url(#foil)">CADDEN CHUA</text>
-  <text class="mono" x="150" y="404" text-anchor="middle" font-size="9" letter-spacing="3" fill="#7d8590">@CADZCHUA</text>
-  <text class="mono" x="150" y="426" text-anchor="middle" font-size="7.5" letter-spacing="2.6" fill="#4ade80">SOFTWARE &#183; AI / ML</text>
-
 </g>
 </svg>
