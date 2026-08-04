@@ -59,7 +59,7 @@
   <!-- headline figure, no ring: a contribution count has no maximum, so a partial
        arc round it would imply a scale that does not exist -->
   <g class="pop">
-    <text id="v-contrib" class="disp" x="150" y="136" text-anchor="middle" font-size="56" font-weight="bold" fill="url(#numg)">985</text>
+    <text id="v-contrib" class="disp" x="150" y="136" text-anchor="middle" font-size="56" font-weight="bold" fill="url(#numg)">984</text>
     <text class="mono" x="150" y="162" text-anchor="middle" font-size="8.5" letter-spacing="1.8" fill="#a78bfa">CONTRIBUTIONS</text>
     <text id="v-year" class="mono" x="150" y="180" text-anchor="middle" font-size="8" letter-spacing="2.4" fill="#7d8590">2026</text>
   </g>
