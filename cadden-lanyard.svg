@@ -19,6 +19,8 @@
 .holo{animation:holoSweep 5.5s ease-in-out 3.8s infinite}
 .sp{animation:twinkle 4.2s ease-in-out infinite}
 .fu{opacity:0;animation:fadeUp .5s ease-out forwards}
+/* reduced motion: .fu starts at opacity 0, so pin it visible */
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fu{opacity:1!important}}
 ]]></style>
 
 <linearGradient id="strap" x1="0" y1="0" x2="1" y2="0">
@@ -49,7 +51,6 @@
   <path d="M16 0H0V16" fill="none" stroke="#22d3ee" stroke-opacity=".07" stroke-width="1"/>
 </pattern>
 
-<filter id="glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <!-- double-merged blur so each star reads as a light source, not a flat shape -->
 <filter id="starglow" x="-160%" y="-160%" width="420%" height="420%">
   <feGaussianBlur stdDeviation="2.6" result="b"/>
@@ -65,7 +66,7 @@
 
 <!-- starfield BEHIND the lanyard: drawn before the card, so the card occludes them.
      Outside .settle/.sway too, so they hold still while the card swings past. -->
-<g class="bg-stars" filter="url(#starglow)">
+<g filter="url(#starglow)">
   <g fill="#f0abfc">
     <use href="#star" class="sp" x="26"  y="312" width="15" height="15" style="animation-delay:.2s"/>
     <use href="#star" class="sp" x="396" y="672" width="11" height="11" style="animation-delay:1.1s"/>

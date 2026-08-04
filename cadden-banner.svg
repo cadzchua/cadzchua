@@ -3,26 +3,30 @@
 <defs>
 <style type="text/css"><![CDATA[
 .mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
+/* 30 chars at 16px mono ~= 288px; 44 chars ~= 422px */
 @keyframes typeA{0%{width:0}24%,100%{width:300px}}
 @keyframes typeB{0%,28%{width:0}54%,100%{width:440px}}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 /* stationary glow: opacity ONLY, no transform of any kind */
 @keyframes twinkle{0%,100%{opacity:.28}50%{opacity:1}}
-@keyframes sweep{0%{transform:translateX(-300px)}60%,100%{transform:translateX(1300px)}}
+/* rect base span is x[-300,0], so the end translate must exceed canvas width + 300
+   or the tail parks on-canvas. 1300 left 200px sitting over the avatar. */
+@keyframes sweep{0%{transform:translateX(-300px)}60%,100%{transform:translateX(1520px)}}
 /* the floating-avatar effect: a slow bob over a glow that breathes at a different rate */
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
-@keyframes reveal{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.tA{animation:typeA 4.4s steps(24) .3s forwards}
-.tB{animation:typeB 4.4s steps(30) .3s forwards}
+.tA{animation:typeA 4.4s steps(30) .3s forwards}
+.tB{animation:typeB 4.4s steps(44) .3s forwards}
 .r1{opacity:0;animation:rise .55s ease-out 2.6s forwards}
 .r2{opacity:0;animation:rise .55s ease-out 2.8s forwards}
 .r3{opacity:0;animation:rise .55s ease-out 3s forwards}
 .sp{animation:twinkle 4.2s ease-in-out infinite}
 .sw{animation:sweep 7s ease-in-out 1s infinite}
 .fl{animation:floaty 5s ease-in-out infinite}
-.rv{transform-box:fill-box;transform-origin:center;opacity:0;animation:reveal .9s cubic-bezier(.34,1.25,.6,1) .5s forwards}
 .ring{transform-box:fill-box;transform-origin:center;animation:spin 26s linear infinite}
+/* reduced motion: stop movement, but pin the end-state of anything that starts
+   hidden (.r1-.r3 at opacity 0, .tA/.tB clips at width 0) or it never appears */
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.r1,.r2,.r3{opacity:1!important}.tA{width:300px!important}.tB{width:440px!important}}
 ]]></style>
 
 <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -49,7 +53,7 @@
   <path d="M20 0H0V20" fill="none" stroke="#22d3ee" stroke-opacity=".045" stroke-width="1"/>
 </pattern>
 
-<filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-10%" y="-25%" width="120%" height="150%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <clipPath id="frame"><rect x="0" y="0" width="1200" height="420" rx="18"/></clipPath>
 <clipPath id="lineA"><rect class="tA" x="54" y="204" width="0" height="24"/></clipPath>
 <clipPath id="lineB"><rect class="tB" x="54" y="242" width="0" height="24"/></clipPath>

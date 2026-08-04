@@ -3,7 +3,6 @@
 <defs>
 <style type="text/css"><![CDATA[
 .mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
-.disp{font-family:'Trebuchet MS','Gill Sans',Avenir,'Segoe UI',sans-serif}
 /* drifting glare rather than a sweep, so it doesn't twin with the stats card */
 @keyframes glare{0%{transform:translate(-80px,-55px);opacity:0}28%{opacity:.95}62%{opacity:.95}100%{transform:translate(90px,65px);opacity:0}}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -11,6 +10,8 @@
 .holo{animation:glare 7.5s ease-in-out 1.4s infinite}
 .r{opacity:0;animation:rise .5s ease-out forwards}
 .card{transform-origin:150px 180px;animation:tilt 7s ease-in-out infinite}
+/* reduced motion: .r starts hidden. The donut uses SMIL, unaffected by this. */
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.r{opacity:1!important}}
 ]]></style>
 
 <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
@@ -41,7 +42,9 @@
   <rect x="9" y="9" width="282" height="342" rx="13" fill="url(#grid)"/>
 
   <g clip-path="url(#inner)">
-    <ellipse class="holo" cx="150" cy="170" rx="135" ry="95" fill="url(#sheen)"/>
+    <!-- opacity="0" base state: the glare keyframe drives it up and back down, but without
+       this the reduced-motion rule leaves it stuck fully opaque over the donut -->
+    <ellipse class="holo" opacity="0" cx="150" cy="170" rx="135" ry="95" fill="url(#sheen)"/>
   </g>
 
   <text class="mono" x="26" y="38" font-size="9" letter-spacing="2.6" fill="#7d8590">TOP LANGUAGES</text>
