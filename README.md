@@ -1,66 +1,95 @@
-<hr>
-<h1 align="center">
-    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hello!!+👋;+I'm+Cadden!;" />
-</h1>
+<div align="center">
 
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/74038190/216656971-9a208a88-e6ad-4b7a-88eb-c410e4cf0e00.gif" width="250" />
-</p>
+<!-- ⌁ Animated terminal banner ⌁ -->
+<img src="./cadden-banner.svg?v=3" alt="Cadden Chua — Software & AI/ML" width="100%"/>
 
-<h3 align="center">
-    A student from Singapore
-</h3>
-
-<div align="center" style="font-size: 1.2em; max-width: 800px; margin: 20px auto; line-height: 1.6;">
-    <p>I am currently studying and have a keen interest in both <b><i>Software Development</i></b> and <b><i>AI/ML</i></b>. I'm diving deep into <b><i>AIML (LLMs)</i></b> and am passionate about exploring the capabilities of machine learning. <img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Penguin.png" alt="Penguin" width="15%" /></p>
-    <p>Feel free to check out my work, reach out, and let’s connect! 😊</p>
 </div>
 
-<br />
-<br />
+<br/>
+
+<table align="center" border="0">
+<tr>
+<td width="40%" align="center" valign="middle">
+
+<!-- 🪪 Photocard on a swinging lanyard -->
+<img src="./cadden-lanyard.svg?v=3" alt="Cadden Chua photocard" width="300"/>
+
+</td>
+<td width="60%" valign="middle">
+
+### ✦ Hello, I'm Cadden
+
+A student in Singapore who builds things for fun.
+
+Most of my time goes into **software engineering** and **AI/ML** — lately that means
+poking at **LLMs** and seeing how far I can push them into real projects. I like
+shipping small tools that do one thing properly.
+
+Always up for collabs, internships, or a good conversation about tech.
+
+<br/>
+
+<a href="https://github.com/cadzchua"><img src="https://img.shields.io/badge/GitHub-0d1117?style=for-the-badge&logo=github&logoColor=22d3ee" alt="GitHub"/></a>
+<a href="https://www.linkedin.com/in/caddenchua/"><img src="https://img.shields.io/badge/LinkedIn-22d3ee?style=for-the-badge&logo=linkedin&logoColor=0d1117" alt="LinkedIn"/></a>
+<a href="https://www.instagram.com/cadzchua/"><img src="https://img.shields.io/badge/Instagram-a78bfa?style=for-the-badge&logo=instagram&logoColor=0d1117" alt="Instagram"/></a>
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 <div align="center">
 
-## 📊 GitHub Statistics
+### ✦ Things I've Built
 
 </div>
 
-<p align="center">
-    <img src="https://cadzchuastats.vercel.app/api?username=cadzchua&show_icons=true&theme=tokyonight" 
-         alt="cadzchua's github stats" 
-         style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);" 
-         onError="this.onerror=null;this.src='https://via.placeholder.com/500x200/cccccc/ffffff?text=Stats+Unavailable';" />
-</p>
+<table align="center" border="0">
+<tr>
+<td width="32%" align="center" valign="middle">
 
-<p align="center">
-    <img src="https://cadzchuastats.vercel.app/api/top-langs/?username=cadzchua&theme=tokyonight&layout=compact" 
-         alt="Cadden's top languages" 
-         style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);" 
-         onError="this.onerror=null;this.src='https://via.placeholder.com/500x200/cccccc/ffffff?text=Languages+Unavailable';" />
-</p>
+<!-- 📸 Photostrip of real project screenshots -->
+<img src="./cadden-photostrip.svg?v=3" alt="Photostrip of Cadden's projects" width="215"/>
 
-<br />
+</td>
+<td width="68%" valign="middle">
 
-<h2 align="center">
-    <img src="https://emojis.slackmojis.com/emojis/images/1621024394/39092/cat-roll.gif?1621024394" width="28" /> Let's Connect!
-</h2>
+| Project | Tech | ⭐ |
+|:---|:---:|:---:|
+| [**gitroast**](https://github.com/cadzchua/gitroast) — roasts your commit history | `TypeScript` `LLM` | 0 |
+| [**code-exp-2026**](https://github.com/cadzchua/code-exp-2026) — hackathon build | `TypeScript` | 0 |
+| [**LocateTheShip**](https://github.com/cadzchua/LocateTheShip) — live vessel tracking | `Python` `REST` | 0 |
+| [**CommViz**](https://github.com/cadzchua/CommViz) — network graph visualiser | `HTML` `JS` | 0 |
+| [**SC2002**](https://github.com/cadzchua/SC2002_Group_Assignment_25S1) — OODP group assignment | `Java` | 2 |
+| [**portfolio**](https://github.com/cadzchua/portfolio) — personal site | `TypeScript` `React` | 1 |
 
-<p align="center" style="font-size: 1.1em; line-height: 1.6; max-width: 600px; margin: 20px auto;">
-    I'm always open to new opportunities, collaborations, or just a chat about tech! You can reach out to me through any of the links below.
-</p>
+<br/>
 
-<p align="center">
-    <a href="https://github.com/cadzchua">
-        <img alt="github" width="50" style="padding: 10px; transition: transform 0.3s;" src="https://img.icons8.com/clouds/100/000000/github.png" />
-    </a>
-    <a href="https://www.linkedin.com/in/caddenchua/">
-        <img alt="linkedin" width="50" style="padding: 10px; transition: transform 0.3s;" src="https://img.icons8.com/clouds/100/000000/linkedin.png" />
-    </a>
-    <a href="https://www.instagram.com/cadzchua/">
-        <img alt="instagram" width="50" style="padding: 10px; transition: transform 0.3s;" src="https://img.icons8.com/clouds/100/000000/instagram.png" />
-    </a>
-</p>
+*The strip on the left is the real thing — screenshots pulled straight from those repos.*
 
-<p align="center" style="font-size: 0.8em; color: #aaa; margin-top: 40px;">Made with ❤️ by Cadden</p>
+</td>
+</tr>
+</table>
 
-<hr>
+<br/>
+
+<div align="center">
+
+### ✦ The Collection
+
+<img src="./cadden-stats.svg?v=3" alt="GitHub stats card" height="400"/>
+<img src="./cadden-langs.svg?v=3" alt="Top languages card" height="400"/>
+
+<br/><br/>
+
+<!-- 📈 Contribution activity graph -->
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=cadzchua&bg_color=0d1117&color=22d3ee&line=a78bfa&point=22d3ee&area=true&area_color=a78bfa&hide_border=true&custom_title=Contribution%20Graph" alt="Contribution graph" width="95%"/>
+
+<br/><br/>
+
+### 🐍 Watch the snake eat my contributions
+
+<img src="https://raw.githubusercontent.com/cadzchua/cadzchua/output/github-snake-dark.svg" alt="Contribution snake"/>
+
+</div>
