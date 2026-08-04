@@ -6,7 +6,7 @@
 .disp{font-family:'Trebuchet MS','Gill Sans',Avenir,'Segoe UI',sans-serif}
 /* vertical prism band; end must clear the inner clip (y 9-351) */
 @keyframes prism{0%{transform:translateY(-160px)}52%,100%{transform:translateY(540px)}}
-@keyframes ring{from{stroke-dashoffset:339}to{stroke-dashoffset:95}}
+@keyframes ring{from{stroke-dashoffset:339}to{stroke-dashoffset:138.4}}
 @keyframes rise{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
 @keyframes pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}}
 @keyframes tilt{0%,100%{transform:rotate(-.5deg)}50%{transform:rotate(.5deg)}}
@@ -16,7 +16,7 @@
 .pop{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .65s cubic-bezier(.34,1.4,.6,1) 1.5s forwards}
 .card{transform-origin:150px 180px;animation:tilt 7s ease-in-out infinite}
 /* reduced motion: .r/.pop start hidden and .ring starts fully offset (empty), so pin all three */
-@media (prefers-reduced-motion:reduce){*{animation:none!important}.r,.pop{opacity:1!important}.ring{stroke-dashoffset:95!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.r,.pop{opacity:1!important}.ring{stroke-dashoffset:138.4!important}}
 ]]></style>
 
 <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
