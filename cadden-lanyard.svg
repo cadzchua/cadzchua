@@ -4,20 +4,6 @@
 <style type="text/css"><![CDATA[
 .mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
 .disp{font-family:'Trebuchet MS','Gill Sans',Avenir,'Segoe UI',sans-serif}
-/* A pendulum's period is constant; only its amplitude decays. So the swing segments
-   are evenly spaced and the easing lives PER KEYFRAME - a single global curve over
-   the whole run squashes the early swings together and drags out the last one.
-   (cubic-bezier(.34,1.1,.5,1) reached 70% progress at 27% of elapsed time.) */
-@keyframes settle{
-  0%  {transform:rotate(0deg) translateY(-780px);animation-timing-function:cubic-bezier(.5,0,.85,.4)}
-  20% {transform:rotate(0deg) translateY(0);animation-timing-function:cubic-bezier(.3,0,.4,1)}
-  36% {transform:rotate(11deg) translateY(0);animation-timing-function:ease-in-out}
-  52% {transform:rotate(-7.5deg) translateY(0);animation-timing-function:ease-in-out}
-  68% {transform:rotate(4.8deg) translateY(0);animation-timing-function:ease-in-out}
-  84% {transform:rotate(-2.6deg) translateY(0);animation-timing-function:ease-in-out}
-  94% {transform:rotate(1.2deg) translateY(0);animation-timing-function:ease-in-out}
-  100%{transform:rotate(0deg) translateY(0)}
-}
 @keyframes sway{0%,100%{transform:rotate(-2.8deg)}50%{transform:rotate(2.8deg)}}
 @keyframes wobble{0%,100%{transform:rotate(1.4deg)}50%{transform:rotate(-1.4deg)}}
 /* end must clear card width + skew offset (tan20deg * 708 = 258px), else the sweep parks mid-card */
@@ -25,15 +11,12 @@
 /* stationary glow: opacity ONLY. No transform of any kind, so a star cannot
    move, scale or rotate - it just shines brighter and dimmer where it sits. */
 @keyframes twinkle{0%,100%{opacity:.28}50%{opacity:1}}
-@keyframes fadeUp{from{opacity:0}to{opacity:1}}
-.settle{transform-origin:210px 6px;animation:settle 3.4s linear forwards}
-.sway{transform-origin:210px 6px;animation:sway 4.6s ease-in-out 3.4s infinite}
-.wob{transform-origin:210px 300px;animation:wobble 4.6s ease-in-out 3.4s infinite}
-.holo{animation:holoSweep 5.5s ease-in-out 3.8s infinite}
+.sway{transform-origin:210px 6px;animation:sway 4.6s ease-in-out infinite}
+.wob{transform-origin:210px 300px;animation:wobble 4.6s ease-in-out infinite}
+.holo{animation:holoSweep 5.5s ease-in-out infinite}
 .sp{animation:twinkle 4.2s ease-in-out infinite}
-.fu{opacity:0;animation:fadeUp .5s ease-out forwards}
-/* reduced motion: .fu starts at opacity 0, so pin it visible */
-@media (prefers-reduced-motion:reduce){*{animation:none!important}.fu{opacity:1!important}}
+/* nothing starts hidden, so stopping animation is enough */
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
 ]]></style>
 
 <linearGradient id="strap" x1="0" y1="0" x2="1" y2="0">
@@ -93,7 +76,6 @@
   </g>
 </g>
 
-<g class="settle">
 <g class="sway">
 
   <!-- lanyard straps -->
@@ -150,12 +132,12 @@
     <circle cx="210" cy="428" r="71" fill="none" stroke="url(#foil)" stroke-width="2.4" opacity=".95"/>
 
     <!-- identity -->
-    <text class="disp fu" style="animation-delay:3.5s" x="210" y="558" text-anchor="middle" font-size="25" font-weight="bold" letter-spacing="1.4" fill="#e6edf3">Cadden Chua</text>
-    <text class="mono fu" style="animation-delay:3.65s" x="210" y="578" text-anchor="middle" font-size="9.5" letter-spacing="2.4" fill="#4ade80">SOFTWARE &#183; AI / ML</text>
+    <text class="disp" x="210" y="558" text-anchor="middle" font-size="25" font-weight="bold" letter-spacing="1.4" fill="#e6edf3">Cadden Chua</text>
+    <text class="mono" x="210" y="578" text-anchor="middle" font-size="9.5" letter-spacing="2.4" fill="#4ade80">SOFTWARE &#183; AI / ML</text>
 
     <line x1="112" y1="594" x2="308" y2="594" stroke="#21262d" stroke-width="1" stroke-dasharray="3 4"/>
 
-    <g class="mono fu" style="animation-delay:3.85s" font-size="9.5" letter-spacing=".9">
+    <g class="mono" font-size="9.5" letter-spacing=".9">
       <text x="112" y="616" fill="#7d8590">LOCATION</text>
       <text x="308" y="616" text-anchor="end" fill="#e6edf3">SINGAPORE</text>
       <text x="112" y="634" fill="#7d8590">STATUS</text>
@@ -163,7 +145,7 @@
     </g>
 
     <!-- barcode -->
-    <g class="fu" style="animation-delay:4.05s" fill="#e6edf3">
+    <g fill="#e6edf3">
       <rect x="110" y="650" width="3" height="22"/><rect x="116" y="650" width="1.5" height="22"/>
       <rect x="120" y="650" width="4" height="22"/><rect x="127" y="650" width="1.5" height="22"/>
       <rect x="131" y="650" width="2" height="22"/><rect x="136" y="650" width="4" height="22"/>
@@ -184,7 +166,7 @@
       <rect x="297" y="650" width="4" height="22"/><rect x="304" y="650" width="1.5" height="22"/>
       <rect x="308" y="650" width="2.5" height="22"/>
     </g>
-    <text class="mono fu" style="animation-delay:4.2s" x="210" y="690" text-anchor="middle" font-size="8.5" letter-spacing="3" fill="#7d8590">@CADZCHUA</text>
+    <text class="mono" x="210" y="690" text-anchor="middle" font-size="8.5" letter-spacing="3" fill="#7d8590">@CADZCHUA</text>
 
     <!-- holographic sheen over the whole card -->
     <g clip-path="url(#cardclip)">
@@ -200,6 +182,5 @@
       <path d="M94 702 v4 M88 696 h-4"/><path d="M326 702 v4 M332 696 h4"/>
     </g>
   </g>
-</g>
 </g>
 </svg>
