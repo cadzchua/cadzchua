@@ -8,6 +8,12 @@ on:
     branches:
       - main
 
+# the 12-hourly schedule and the push trigger can overlap, and both force-push
+# to the output branch
+concurrency:
+  group: snake
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +22,6 @@ jobs:
     steps:
       - name: Generate snake animation
         uses: Platane/snk@v3
-        id: snake-gif
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
