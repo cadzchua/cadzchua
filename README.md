@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ⌁ Animated terminal banner ⌁ -->
-<img src="./cadden-banner.svg?v=18" alt="Cadden Chua — Software & AI/ML" width="100%"/>
+<img src="./cadden-banner.svg?v=19" alt="Cadden Chua — Software & AI/ML" width="100%"/>
 
 </div>
 
@@ -12,7 +12,7 @@
 <td width="40%" align="center" valign="middle">
 
 <!-- 🪪 Credential card on a swinging lanyard -->
-<img src="./cadden-lanyard.svg?v=18" alt="Cadden Chua credential card" width="300"/>
+<img src="./cadden-lanyard.svg?v=19" alt="Cadden Chua credential card" width="300"/>
 
 </td>
 <td width="60%" valign="middle">
@@ -86,8 +86,8 @@ Always up for collabs, internships, or a good conversation about tech.
 
 ### ✦ By the Numbers
 
-<img src="./cadden-stats.svg?v=18" alt="GitHub stats card" height="360"/>
-<img src="./cadden-langs.svg?v=18" alt="Top languages card" height="360"/>
+<img src="./cadden-stats.svg?v=19" alt="GitHub stats card" height="360"/>
+<img src="./cadden-langs.svg?v=19" alt="Top languages card" height="360"/>
 
 <br/><br/>
 

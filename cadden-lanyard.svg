@@ -87,9 +87,12 @@
   <path d="M242 0 L270 0 L221 260 L201 254 Z" fill="url(#strap)"/>
   <!-- stitching sits along each strap's EDGES (offset +/-10 perpendicular to the
        centreline), not down its spine, so it never crosses the wordmark -->
+  <!-- The strap inner edges cross at y=198 (178+41t = 242-41t -> t=.78). Below that the
+       right strap lies over the left, so the LEFT stitching stops at y=196 and only the
+       right runs on to the clasp. Otherwise both sets of dashes pile up at the join. -->
   <g stroke="#0d1117" stroke-opacity=".4" stroke-width="1.1" stroke-dasharray="5 5" fill="none">
-    <path d="M154.1 1.7 L198.1 257.7"/>
-    <path d="M173.9 -1.7 L217.9 254.3"/>
+    <path d="M154.1 1.7 L187.5 196"/>
+    <path d="M173.9 -1.7 L207.9 196"/>
     <path d="M246.1 -1.7 L202.1 254.3"/>
     <path d="M265.9 1.7 L221.9 257.7"/>
   </g>
@@ -111,8 +114,10 @@
   <rect x="200" y="292" width="20" height="2" fill="#fff" fill-opacity=".25"/>
 
   <!-- credential card -->
-  <g class="wob" filter="url(#drop)">
-    <rect x="82" y="298" width="256" height="410" rx="18" fill="url(#foil)"/>
+  <!-- the drop shadow goes on the card RECT only. Filtering the whole group would
+       rasterise every glyph inside it, which is what made the text look soft. -->
+  <g class="wob">
+    <rect x="82" y="298" width="256" height="410" rx="18" fill="url(#foil)" filter="url(#drop)"/>
     <rect x="88" y="304" width="244" height="398" rx="14" fill="url(#cardbg)"/>
     <rect x="88" y="304" width="244" height="398" rx="14" fill="url(#grid)"/>
 
@@ -132,11 +137,11 @@
 
     <!-- identity -->
     <text class="disp fu" style="animation-delay:3.5s" x="210" y="558" text-anchor="middle" font-size="25" font-weight="bold" letter-spacing="1.4" fill="#e6edf3">Cadden Chua</text>
-    <text class="mono fu" style="animation-delay:3.65s" x="210" y="578" text-anchor="middle" font-size="8.5" letter-spacing="2.6" fill="#4ade80">SOFTWARE &#183; AI / ML</text>
+    <text class="mono fu" style="animation-delay:3.65s" x="210" y="578" text-anchor="middle" font-size="9.5" letter-spacing="2.4" fill="#4ade80">SOFTWARE &#183; AI / ML</text>
 
     <line x1="112" y1="594" x2="308" y2="594" stroke="#21262d" stroke-width="1" stroke-dasharray="3 4"/>
 
-    <g class="mono fu" style="animation-delay:3.85s" font-size="8.5" letter-spacing=".9">
+    <g class="mono fu" style="animation-delay:3.85s" font-size="9.5" letter-spacing=".9">
       <text x="112" y="616" fill="#7d8590">LOCATION</text>
       <text x="308" y="616" text-anchor="end" fill="#e6edf3">SINGAPORE</text>
       <text x="112" y="634" fill="#7d8590">STATUS</text>
@@ -165,7 +170,7 @@
       <rect x="297" y="650" width="4" height="22"/><rect x="304" y="650" width="1.5" height="22"/>
       <rect x="308" y="650" width="2.5" height="22"/>
     </g>
-    <text class="mono fu" style="animation-delay:4.2s" x="210" y="690" text-anchor="middle" font-size="7.5" letter-spacing="3" fill="#7d8590">@CADZCHUA</text>
+    <text class="mono fu" style="animation-delay:4.2s" x="210" y="690" text-anchor="middle" font-size="8.5" letter-spacing="3" fill="#7d8590">@CADZCHUA</text>
 
     <!-- holographic sheen over the whole card -->
     <g clip-path="url(#cardclip)">
