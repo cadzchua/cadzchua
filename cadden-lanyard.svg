@@ -4,7 +4,20 @@
 <style type="text/css"><![CDATA[
 .mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
 .disp{font-family:'Trebuchet MS','Gill Sans',Avenir,'Segoe UI',sans-serif}
-@keyframes settle{0%{transform:rotate(0deg) translateY(-780px)}18%{transform:rotate(0deg) translateY(0)}30%{transform:rotate(12deg)}46%{transform:rotate(-8.5deg)}62%{transform:rotate(5.5deg)}78%{transform:rotate(-3deg)}92%{transform:rotate(1.4deg)}100%{transform:rotate(0deg)}}
+/* A pendulum's period is constant; only its amplitude decays. So the swing segments
+   are evenly spaced and the easing lives PER KEYFRAME - a single global curve over
+   the whole run squashes the early swings together and drags out the last one.
+   (cubic-bezier(.34,1.1,.5,1) reached 70% progress at 27% of elapsed time.) */
+@keyframes settle{
+  0%  {transform:rotate(0deg) translateY(-780px);animation-timing-function:cubic-bezier(.5,0,.85,.4)}
+  20% {transform:rotate(0deg) translateY(0);animation-timing-function:cubic-bezier(.3,0,.4,1)}
+  36% {transform:rotate(11deg) translateY(0);animation-timing-function:ease-in-out}
+  52% {transform:rotate(-7.5deg) translateY(0);animation-timing-function:ease-in-out}
+  68% {transform:rotate(4.8deg) translateY(0);animation-timing-function:ease-in-out}
+  84% {transform:rotate(-2.6deg) translateY(0);animation-timing-function:ease-in-out}
+  94% {transform:rotate(1.2deg) translateY(0);animation-timing-function:ease-in-out}
+  100%{transform:rotate(0deg) translateY(0)}
+}
 @keyframes sway{0%,100%{transform:rotate(-2.8deg)}50%{transform:rotate(2.8deg)}}
 @keyframes wobble{0%,100%{transform:rotate(1.4deg)}50%{transform:rotate(-1.4deg)}}
 /* end must clear card width + skew offset (tan20deg * 708 = 258px), else the sweep parks mid-card */
@@ -13,7 +26,7 @@
    move, scale or rotate - it just shines brighter and dimmer where it sits. */
 @keyframes twinkle{0%,100%{opacity:.28}50%{opacity:1}}
 @keyframes fadeUp{from{opacity:0}to{opacity:1}}
-.settle{transform-origin:210px 6px;animation:settle 3.4s cubic-bezier(.34,1.1,.5,1) forwards}
+.settle{transform-origin:210px 6px;animation:settle 3.4s linear forwards}
 .sway{transform-origin:210px 6px;animation:sway 4.6s ease-in-out 3.4s infinite}
 .wob{transform-origin:210px 300px;animation:wobble 4.6s ease-in-out 3.4s infinite}
 .holo{animation:holoSweep 5.5s ease-in-out 3.8s infinite}
