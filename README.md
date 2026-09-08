@@ -33,13 +33,12 @@ Open to collaborations, internships, and a good conversation about tech.
 
 <table align="center">
 <tr>
-<td width="30%" align="center" valign="middle">
-<img src="./cadden-lanyard.svg" alt="Cadden Chua ID card: software and AI/ML, student in Singapore" width="260"/>
+<td rowspan="7" width="260" align="center" valign="middle">
+<img src="./cadden-lanyard.svg" alt="Cadden Chua ID card: software and AI/ML, student in Singapore" width="260" height="470"/>
 </td>
-<td width="70%" valign="middle">
-
-<table align="center">
-<tr><th align="left">Project</th><th align="left">What it does</th></tr>
+<th align="left">Project</th>
+<th align="left">What it does</th>
+</tr>
 <tr>
   <td><a href="https://github.com/cadzchua/gitroast"><b>gitroast</b></a></td>
   <td>A CLI that grades your Git habits and roasts your commit history.<br/><sub>TypeScript · Node.js</sub></td>
@@ -67,10 +66,6 @@ Open to collaborations, internships, and a good conversation about tech.
 </table>
 
 <p align="center"><a href="https://github.com/cadzchua?tab=repositories">Explore all repositories →</a></p>
-
-</td>
-</tr>
-</table>
 
 <br/>
 
