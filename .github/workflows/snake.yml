@@ -2,39 +2,61 @@ name: Generate Contribution Snake
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "43 */12 * * *"
   workflow_dispatch:
-  # a push here IS a contribution, so it changes the graph the snake draws
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/snake.yml
 
-# the 12-hourly schedule and the push trigger can overlap, and both force-push
-# to the output branch
+# Finish publishing before another run starts writing the output branch.
 concurrency:
   group: snake
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
+    env:
+      PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+      SNAKE_OUTPUTS: |
+        dist/github-snake.svg?palette=github-light&color_snake=#0891b2
+        dist/github-snake-dark.svg?palette=github-dark&color_snake=#22d3ee&color_dots=#161b22,#0e4a52,#177f8c,#22d3ee,#4ade80
     steps:
-      - name: Generate snake animation
-        uses: Platane/snk@v3
+      - name: Generate with optional profile token
+        id: profile
+        if: env.PROFILE_TOKEN != ''
+        continue-on-error: true
+        uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          # the default token is repo-scoped and sees PUBLIC contributions only.
-          # add a PAT with read:user as PROFILE_TOKEN to include private ones.
-          github_token: ${{ secrets.PROFILE_TOKEN || github.token }}
-          outputs: |
-            dist/github-snake-dark.svg?palette=github-dark&color_snake=#22d3ee&color_dots=#161b22,#0e4a52,#177f8c,#22d3ee,#4ade80
+          github_token: ${{ env.PROFILE_TOKEN }}
+          outputs: ${{ env.SNAKE_OUTPUTS }}
+
+      - name: Report profile token fallback
+        if: steps.profile.outcome == 'failure'
+        run: echo "::warning::PROFILE_TOKEN generation failed; retrying with the automatic workflow token. Check or remove PROFILE_TOKEN in repository secrets."
+
+      - name: Generate with automatic workflow token
+        if: env.PROFILE_TOKEN == '' || steps.profile.outcome == 'failure'
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ github.token }}
+          outputs: ${{ env.SNAKE_OUTPUTS }}
 
       - name: Push to output branch
-        uses: crazy-max/ghaction-github-pages@v4
+        uses: crazy-max/ghaction-github-pages@v5
         with:
           target_branch: output
           build_dir: dist
+          keep_history: true
+          allow_empty_commit: false
+          jekyll: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}

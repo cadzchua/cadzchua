@@ -6,29 +6,42 @@ on:
     # heavily at :00 and they can be delayed or dropped.
     - cron: "17 6 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/refresh-stats.yml
+      - .github/stats/**
+      - cadden-stats.svg
+      - cadden-langs.svg
 
 # never let two runs rewrite the same cards at once
 concurrency:
   group: refresh-stats
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   refresh:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Regenerate the cards
         env:
-          # PROFILE_TOKEN (a PAT with read:user) makes the contribution figure
-          # include private activity; the default token sees public only
-          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+          # Keep the automatic token available even if PROFILE_TOKEN expires.
+          GITHUB_TOKEN: ${{ github.token }}
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
           STATS_USER: ${{ github.repository_owner }}
         run: python .github/stats/update_stats.py
 
@@ -42,4 +55,19 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add cadden-stats.svg cadden-langs.svg
           git commit -m "chore: refresh stat cards"
-          git push
+
+          # A README edit may land while the API requests are running.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "::error::Stat cards conflict with a newer commit. Rerun this workflow on main."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; fetching the latest main before retrying."
+          done
+          echo "::error::Could not publish stat cards after three attempts."
+          exit 1
