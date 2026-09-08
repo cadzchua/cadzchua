@@ -32,6 +32,13 @@ Open to collaborations, internships, and a good conversation about tech.
 </div>
 
 <table align="center">
+<tr>
+<td width="30%" align="center" valign="middle">
+<img src="./cadden-lanyard.svg" alt="Cadden Chua ID card: software and AI/ML, student in Singapore" width="260"/>
+</td>
+<td width="70%" valign="middle">
+
+<table align="center">
 <tr><th align="left">Project</th><th align="left">What it does</th></tr>
 <tr>
   <td><a href="https://github.com/cadzchua/gitroast"><b>gitroast</b></a></td>
@@ -61,6 +68,10 @@ Open to collaborations, internships, and a good conversation about tech.
 
 <p align="center"><a href="https://github.com/cadzchua?tab=repositories">Explore all repositories →</a></p>
 
+</td>
+</tr>
+</table>
+
 <br/>
 
 <div align="center">
@@ -68,7 +79,6 @@ Open to collaborations, internships, and a good conversation about tech.
 ### ✦ Profile & Activity
 
 <p align="center">
-  <img src="./cadden-lanyard.svg" alt="Cadden Chua ID card: software and AI/ML, student in Singapore" width="199"/>
   <a href="https://github.com/cadzchua?tab=overview"><img src="./cadden-stats.svg" alt="GitHub activity: contributions over the past 12 months, public repositories, languages, and pull requests" width="300"/></a>
   <a href="https://github.com/cadzchua?tab=repositories"><img src="./cadden-langs.svg" alt="Most used languages by code size across my public, non-fork repositories" width="300"/></a>
 </p>
